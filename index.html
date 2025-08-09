@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bold Impact — Micro-giving you can trust</title>
+  <meta name="description" content="Bold Impact is a transparent giving platform where even ₹1 creates change. Donate via UPI and track public receipts." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0b0d12;
+      --panel:#10141c;
+      --elev:#121826;
+      --card:#141b2d;
+      --muted:#9aa3b2;
+      --text:#eef2ff;
+      --primary:#6c8cff;
+      --primary-600:#5478ff;
+      --accent:#8aefb2;
+      --danger:#ff6b6b;
+      --ring: 0 0 0 3px rgb(108 140 255 / .25);
+      --radius:14px;
+      --shadow: 0 10px 30px rgb(0 0 0 / .35);
+      --glow: 0 10px 40px rgb(108 140 255 / .25);
+      --grid: radial-gradient(ellipse at 50% -20%, #20305a55, transparent 45%),
+              radial-gradient(ellipse at 120% 20%, #3b2a6350, transparent 45%),
+              radial-gradient(circle at 10% 120%, #1b3f3250, transparent 35%);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--text);
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background: radial-gradient(1200px 600px at 70% -10%, #1b2240 0%, transparent 60%),
+                  radial-gradient(900px 700px at -20% 10%, #102d25 0%, transparent 60%),
+                  var(--bg);
+      background-attachment: fixed;
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .container{max-width:1100px; margin:0 auto; padding:0 20px}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(1.3) blur(10px);
+      background:linear-gradient(180deg, rgb(11 13 18 / .7), rgb(11 13 18 / .35), transparent);
+      border-bottom:1px solid rgb(255 255 255 / .06);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
+    .brand svg{filter: drop-shadow(0 2px 10px rgb(138 239 178 / .4));}
+    .nav a{opacity:.9; text-decoration:none; padding:8px 10px; border-radius:10px}
+    .nav a:hover{background:rgb(255 255 255 / .06)}
+    .nav .cta{
+      background:linear-gradient(135deg, var(--primary), #9b8aff);
+      padding:10px 14px; border-radius:12px; color:#0a0d14; font-weight:700;
+      box-shadow: var(--glow);
+    }
+    .nav .cta:hover{transform:translateY(-1px); transition:.2s ease}
+
+    /* Hero */
+    .hero{padding:60px 0 30px}
+    .hero .wrap{
+      display:grid; gap:26px; grid-template-columns: 1.1fr .9fr;
+      align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:6px 10px; border-radius:999px;
+      background:rgb(108 140 255 / .14);
+      color:#cfd8ff; font-weight:600; font-size:.9rem
+    }
+    h1{
+      margin:8px 0 10px; font-family:Manrope,Inter,system-ui,sans-serif;
+      font-weight:800; font-size:clamp(32px, 5vw, 54px); line-height:1.05;
+      letter-spacing:-.02em;
+      background:linear-gradient(180deg, #f5f8ff 0%, #c7d2ff 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      text-shadow: 0 10px 40px rgb(114 140 255 / .15);
+    }
+    .lead{color:#c6cbe6; font-size:1.05rem}
+    .chips{display:flex; gap:10px; flex-wrap:wrap}
+    .chip{
+      border:1px solid rgb(255 255 255 / .08);
+      background:linear-gradient(180deg, rgb(255 255 255 / .04), rgb(255 255 255 / .02));
+      padding:8px 12px; border-radius:999px; color:#dfe5ff; font-weight:600; font-size:.9rem
+    }
+    .hero-card{
+      border:1px solid rgb(255 255 255 / .08); border-radius:18px;
+      background:linear-gradient(180deg, rgb(20 27 45 / .8), rgb(16 20 28 / .8));
+      box-shadow: var(--shadow);
+      padding:20px;
+    }
+    .hero-card .stat{
+      display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px; margin-top:14px;
+    }
+    .stat .tile{
+      padding:14px; border-radius:14px;
+      background:linear-gradient(180deg, rgb(255 255 255 / .04), rgb(255 255 255 / .02));
+      border:1px solid rgb(255 255 255 / .07); text-align:center
+    }
+    .tile b{display:block; font-size:1.1rem}
+
+    /* Sections */
+    section{padding:30px 0}
+    h2{
+      font-family:Manrope,Inter,sans-serif; font-size:1.6rem; letter-spacing:-.01em;
+      margin:0 0 14px;
+    }
+    .muted{color:var(--muted)}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    .card{
+      border:1px solid rgb(255 255 255 / .08);
+      background:linear-gradient(180deg, rgb(22 26 36 / .9), rgb(16 20 28 / .9));
+      border-radius:16px; box-shadow:var(--shadow); padding:18px
+    }
+    .inline{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+
+    /* Donate */
+    .donate .qr{display:flex; flex-direction:column; gap:12px}
+    .qr canvas, .qr img{
+      width:100%; max-width:320px; border-radius:12px; border:1px solid rgb(255 255 255 / .08)
+    }
+    .id-row{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap
+    }
+    code.badge{
+      background:#0f1420; color:#cfe1ff; border:1px solid rgb(255 255 255 / .08);
+      padding:6px 10px; border-radius:10px; font-weight:700
+    }
+    .copy{
+      padding:8px 12px; border-radius:10px; font-weight:700; border:0; cursor:pointer;
+      background:linear-gradient(135deg, #1b2338, #22305a); color:#dbe3ff;
+      border:1px solid rgb(255 255 255 / .1)
+    }
+    .copy:focus{outline:none; box-shadow: var(--ring)}
+    .amounts{display:flex; gap:8px; flex-wrap:wrap}
+    .amounts .btn{
+      padding:10px 12px; border-radius:12px; border:1px solid rgb(255 255 255 / .1);
+      background:rgb(255 255 255 / .04); color:#e7ebff; font-weight:700; cursor:pointer
+    }
+    .amounts .btn.sel{background:linear-gradient(135deg, var(--primary), #9b8aff); color:#0b0d12; border-color:transparent}
+    .amt-input{
+      display:flex; align-items:center; gap:8px; margin-top:8px
+    }
+    .amt-input input{
+      width:140px; padding:10px 12px; border-radius:12px; background:#0f1523; color:#eaf0ff;
+      border:1px solid rgb(255 255 255 / .12)
+    }
+    .cta{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      background:linear-gradient(135deg, var(--primary), #9b8aff);
+      color:#0a0d14; font-weight:800; padding:12px 16px; border-radius:12px; text-decoration:none;
+      box-shadow: var(--glow)
+    }
+    .cta.secondary{
+      background:linear-gradient(135deg, #1e293b, #0f172a); color:#dce6ff; border:1px solid rgb(255 255 255 / .1);
+      box-shadow:none
+    }
+
+    /* Form fields */
+    .field{display:flex; flex-direction:column; gap:6px; margin:10px 0}
+    .field label{font-weight:600; color:#d9def4}
+    .field input, .field select, .field textarea{
+      background:#0f1523; color:#eaf0ff; border:1px solid rgb(255 255 255 / .12);
+      border-radius:12px; padding:10px 12px
+    }
+    .note{
+      margin-top:6px; padding:10px 12px; border-radius:12px;
+      background:linear-gradient(180deg, #0e1422, #0b111d); border:1px dashed rgb(255 255 255 / .14);
+      color:#cbd6ff
+    }
+
+    /* Table */
+    table{width:100%; border-collapse:separate; border-spacing:0; min-width:680px}
+    th, td{padding:12px 12px; text-align:left; border-bottom:1px solid rgb(255 255 255 / .06)}
+    thead th{font-size:.92rem; color:#cbd6ff}
+    tbody tr:hover{background:rgb(255 255 255 / .03)}
+    .status{padding:6px 10px; border-radius:999px; font-weight:700; font-size:.85rem}
+    .status.pending{background:#1f2539; color:#c9d2ff}
+    .status.paid{background:#153126; color:#a6f5c2}
+    .status.failed{background:#341a1a; color:#ffb3b3}
+
+    /* How it works */
+    .steps{display:grid; grid-template-columns:repeat(3, 1fr); gap:14px}
+    .step{
+      border:1px solid rgb(255 255 255 / .08); border-radius:16px; padding:16px;
+      background:linear-gradient(180deg, rgb(255 255 255 / .04), rgb(255 255 255 / .02));
+    }
+    .step b{display:block; font-size:1.1rem; margin-bottom:6px}
+
+    /* FAQ */
+    details{
+      border:1px solid rgb(255 255 255 / .08); border-radius:14px; background:#0f1523;
+      padding:12px 14px
+    }
+    details+details{margin-top:10px}
+    summary{cursor:pointer; font-weight:700}
+    summary::-webkit-details-marker{display:none}
+    summary:focus{outline:none}
+
+    /* Footer */
+    footer{padding:30px 0; border-top:1px solid rgb(255 255 255 / .08); color:#b9c4e6}
+    .foot{display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero .wrap{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
+      table{min-width:0}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <div class="brand">
+        <svg width="28" height="28" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <rect x="4" y="4" width="32" height="32" rx="10" fill="#0d162c" stroke="#6c8cff" opacity=".8"/>
+          <path d="M12 20c0-4 3-7 7-7s7 3 7 7-7 10-7 10-7-6-7-10z" fill="#8aefb2"/>
+        </svg>
+        <span>Bold Impact</span>
+      </div>
+      <nav class="inline">
+        <a href="#why">Why</a>
+        <a href="#donate">Donate</a>
+        <a href="#transparency">Transparency</a>
+        <a href="#faq">FAQ</a>
+        <a class="cta" href="#donate">Donate now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container wrap">
+        <div>
+          <span class="eyebrow" aria-label="Trust tagline">₹1 can matter • Public receipts</span>
+          <h1>Micro-giving made bold. Transparent. Trackable.</h1>
+          <p class="lead">
+            Every rupee moves with proof. Donate via UPI in seconds and see redacted receipts
+            in our public tracker when funds are disbursed.
+          </p>
+          <div class="chips" aria-label="Key highlights">
+            <div class="chip">₹1 minimum</div>
+            <div class="chip">Verified cases</div>
+            <div class="chip">Direct transfers</div>
+            <div class="chip">Receipts published</div>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Impact snapshot">
+          <div class="stat">
+            <div class="tile">
+              <span class="muted">Active cases</span>
+              <b id="stat-cases">Coming soon</b>
+            </div>
+            <div class="tile">
+              <span class="muted">Total raised</span>
+              <b id="stat-raised">₹0</b>
+            </div>
+            <div class="tile">
+              <span class="muted">Payouts</span>
+              <b id="stat-payouts">0</b>
+            </div>
+          </div>
+          <p class="muted" style="margin-top:10px">Numbers update after our first disbursement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="container grid-2">
+        <div class="card">
+          <h2>Why Bold Impact</h2>
+          <p class="muted">We believe trust should be the default in giving. That’s why we verify cases, transfer funds directly, and publish redacted receipts for the public.</p>
+          <ul>
+            <li><b>Verification first:</b> Cases are screened and prioritized.</li>
+            <li><b>Direct help:</b> Disbursements go to recipients or vendors.</li>
+            <li><b>Proof you can see:</b> Receipts are posted after payout.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Disbursement timelines</h2>
+          <ul>
+            <li>3–7 business days post verification</li>
+            <li>24–72 hours for urgent medical cases</li>
+          </ul>
+          <b>Rollover policy</b>
+          <p class="muted">If a case can’t proceed, we reassign transparently or refund on request before disbursement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="donate" class="donate">
+      <div class="container">
+        <h2>Donate via UPI (GPay, PhonePe, BHIM, Paytm)</h2>
+        <div class="grid-2">
+          <!-- Left: QR + UPI ID + amounts -->
+          <div class="card qr">
+            <p><b>Scan & donate instantly</b></p>
+
+            <!-- Replace with your actual QR image OR keep the placeholder -->
+            <img id="qr-img" src="qr-gpay.png" alt="UPI QR code for donating to Bold Impact" onerror="this.replaceWith(makeQRPlaceholder())" />
+
+            <div class="id-row">
+              <span class="muted">UPI ID:</span>
+              <code id="upi-id" class="badge">yourupi@bank</code>
+              <button class="copy" id="copy-upi" type="button" aria-label="Copy UPI ID">Copy</button>
+            </div>
+
+            <p class="muted" style="margin:0">Minimum donation: ₹1 • All amounts welcome</p>
+
+            <div class="inline" style="margin-top:8px">
+              <span class="muted">Quick amounts:</span>
+              <div class="amounts" role="group" aria-label="Choose amount">
+                <button class="btn sel" data-amt="1">₹1</button>
+                <button class="btn" data-amt="10">₹10</button>
+                <button class="btn" data-amt="50">₹50</button>
+                <button class="btn" data-amt="100">₹100</button>
+                <button class="btn" data-amt="500">₹500</button>
+                <button class="btn" data-amt="1000">₹1,000</button>
+              </div>
+            </div>
+
+            <div class="amt-input" aria-label="Enter custom amount">
+              <label for="amt" class="muted">Custom amount (₹)</label>
+              <input id="amt" type="number" inputmode="numeric" min="1" step="1" placeholder="e.g., 251" />
+            </div>
+
+            <a id="upi-link" class="cta" href="#" rel="noopener">
+              Open in UPI app
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8" stroke="#0a0d14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <p class="muted" style="margin:6px 0 0">Tip: On mobile, tap “Open in UPI app” to prefill amount and note.</p>
+          </div>
+
+          <!-- Right: donor details -->
+          <div class="card">
+            <p><b>Help us attribute your donation</b></p>
+
+            <div class="field">
+              <label for="d-name">Full name (optional)</label>
+              <input id="d-name" placeholder="Your name (for updates)" />
+            </div>
+
+            <div class="field">
+              <label for="d-email">Email (for updates and receipts)</label>
+              <input id="d-email" type="email" placeholder="you@example.com" />
+            </div>
+
+            <div class="field">
+              <label for="d-cause">Select a cause</label>
+              <select id="d-cause">
+                <option value="where-needed">Where needed most</option>
+                <option value="medical">Medical</option>
+                <option value="education">Education</option>
+                <option value="relief">Relief</option>
+              </select>
+            </div>
+
+            <div class="inline">
+              <button class="cta secondary" type="button" id="save-donor">Save details</button>
+              <span class="muted" id="save-msg" aria-live="polite"></span>
+            </div>
+
+            <div class="note">
+              After you donate, please email your payment screenshot to
+              <b>craftysatisfaction@gmail.com</b> with your name and chosen cause.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="transparency" aria-labelledby="trans-title">
+      <div class="container">
+        <h2 id="trans-title">Transparency (payout tracker)</h2>
+        <div class="card">
+          <p class="muted">No payouts yet. This table will populate after the first disbursement with redacted receipts.</p>
+          <div style="overflow:auto">
+            <table aria-label="Payout tracker">
+              <thead>
+                <tr>
+                  <th>Case ID</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Receipt</th>
+                </tr>
+              </thead>
+              <tbody id="tracker-rows">
+                <tr>
+                  <td colspan="5" class="muted">Awaiting first disbursement.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="how-title">
+      <div class="container">
+        <h2 id="how-title">How it works</h2>
+        <div class="steps">
+          <div class="step">
+            <b>1. Verify</b>
+            <p class="muted">We collect documents, validate needs, and queue cases by urgency.</p>
+          </div>
+          <div class="step">
+            <b>2. Disburse</b>
+            <p class="muted">Funds go directly to recipients or vendors after checks.</p>
+          </div>
+          <div class="step">
+            <b>3. Publish</b>
+            <p class="muted">We post redacted receipts and status updates in the tracker.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title">FAQs</h2>
+        <details>
+          <summary>Is ₹1 really okay?</summary>
+          <p class="muted">Yes. Micro-giving adds up fast and keeps help flowing consistently.</p>
+        </details>
+        <details>
+          <summary>Can I choose where my donation goes?</summary>
+          <p class="muted">Yes. Pick a cause when you donate. If a case can’t proceed, we reassign transparently or refund on request before disbursement.</p>
+        </details>
+        <details>
+          <summary>How will I know my donation helped?</summary>
+          <p class="muted">We publish redacted receipts and case updates in the payout tracker.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div class="inline">
+        <b>Bold Impact</b>
+        <span class="muted">• Micro-giving you can trust</span>
+      </div>
+      <div class="inline">
+        <a href="mailto:craftysatisfaction@gmail.com" class="muted">craftysatisfaction@gmail.com</a>
+        <span class="muted">|</span>
+        <a href="#donate" class="cta">Donate</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Config
+    const UPI_ID = "s2005.thakur@oksbi";          // ← replace with your UPI ID
+    const UPI_NAME = "Bold Impact";         // ← display name
+    const CURRENCY = "INR";
+
+    // DOM
+    const upiIdEl = document.getElementById('upi-id');
+    const upiLinkEl = document.getElementById('upi-link');
+    const amountButtons = Array.from(document.querySelectorAll('.amounts .btn'));
+    const amtInput = document.getElementById('amt');
+    const nameEl = document.getElementById('d-name');
+    const emailEl = document.getElementById('d-email');
+    const causeEl = document.getElementById('d-cause');
+    const copyBtn = document.getElementById('copy-upi');
+    const saveBtn = document.getElementById('save-donor');
+    const saveMsg = document.getElementById('save-msg');
+
+    // Init
+    upiIdEl.textContent = UPI_ID;
+    hydrateFromLocal();
+    updateUPILink();
+
+    // Amount selection logic
+    amountButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        amountButtons.forEach(b => b.classList.remove('sel'));
+        btn.classList.add('sel');
+        amtInput.value = ''; // clear custom
+        updateUPILink();
+      });
+    });
+
+    amtInput.addEventListener('input', () => {
+      if (amtInput.value && Number(amtInput.value) > 0) {
+        amountButtons.forEach(b => b.classList.remove('sel'));
+      } else {
+        // fall back to first quick amount if empty/invalid
+        amountButtons[0].classList.add('sel');
+      }
+      updateUPILink();
+    });
+
+    // Build UPI deep link
+    function updateUPILink() {
+      const amt = getSelectedAmount();
+      const note = makeNote();
+      const url = new URL('upi://pay');
+      url.searchParams.set('pa', UPI_ID);         // Payee VPA
+      url.searchParams.set('pn', UPI_NAME);       // Payee name
+      url.searchParams.set('am', String(amt));    // Amount
+      url.searchParams.set('cu', CURRENCY);       // Currency
+      url.searchParams.set('tn', note);           // Transaction note
+      upiLinkEl.href = url.toString();
+      upiLinkEl.setAttribute('aria-label', `Open UPI app to donate ₹${amt}`);
+    }
+
+    function getSelectedAmount() {
+      const custom = Number(amtInput.value);
+      if (custom && custom >= 1) return Math.floor(custom);
+      const selected = amountButtons.find(b => b.classList.contains('sel'));
+      return selected ? Number(selected.dataset.amt) : 1;
+    }
+
+    function makeNote() {
+      const name = (nameEl.value || '').trim();
+      const cause = (causeEl.value || 'where-needed').trim();
+      const email = (emailEl.value || '').trim();
+      const parts = [
+        `BoldImpact`,
+        cause && `cause:${cause}`,
+        name && `name:${name}`,
+        email && `mail:${email}`
+      ].filter(Boolean);
+      return parts.join(' | ').slice(0, 80); // keep it short
+    }
+
+    // Copy UPI
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(UPI_ID);
+        toasty('UPI ID copied');
+      } catch {
+        toasty('Copy failed — select and copy manually', true);
+      }
+    });
+
+    // Save donor info locally
+    saveBtn.addEventListener('click', () => {
+      const email = emailEl.value.trim();
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        toasty('Enter a valid email', true);
+        return;
+      }
+      const data = {
+        name: nameEl.value.trim(),
+        email,
+        cause: causeEl.value
+      };
+      localStorage.setItem('boldimpact:donor', JSON.stringify(data));
+      saveMsg.textContent = 'Saved for next time ✓';
+      setTimeout(() => saveMsg.textContent = '', 2500);
+      updateUPILink();
+    });
+
+    function hydrateFromLocal() {
+      try {
+        const raw = localStorage.getItem('boldimpact:donor');
+        if (!raw) return;
+        const { name, email, cause } = JSON.parse(raw);
+        if (name) nameEl.value = name;
+        if (email) emailEl.value = email;
+        if (cause) causeEl.value = cause;
+      } catch {}
+    }
+
+    // Toast
+    function toasty(msg, isError = false) {
+      const t = document.createElement('div');
+      t.textContent = msg;
+      t.style.position = 'fixed';
+      t.style.bottom = '18px';
+      t.style.left = '50%';
+      t.style.transform = 'translateX(-50%)';
+      t.style.padding = '10px 14px';
+      t.style.borderRadius = '12px';
+      t.style.fontWeight = '700';
+      t.style.zIndex = '100';
+      t.style.boxShadow = '0 8px 30px rgb(0 0 0 / .35)';
+      t.style.border = '1px solid rgb(255 255 255 / .12)';
+      t.style.background = isError
+        ? 'linear-gradient(180deg, #321a1a, #231212)'
+        : 'linear-gradient(180deg, #162338, #0f172a)';
+      t.style.color = isError ? '#ffb3b3' : '#dce6ff';
+      document.body.appendChild(t);
+      setTimeout(() => t.style.opacity = '0.0', 1800);
+      setTimeout(() => t.remove(), 2300);
+    }
+
+    // Fallback QR placeholder (lightweight inline SVG)
+    function makeQRPlaceholder() {
+      const img = document.createElement('img');
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="320" height="320">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0%" stop-color="#6c8cff"/>
+              <stop offset="100%" stop-color="#9b8aff"/>
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" rx="16" fill="#0f1523"/>
+          <rect x="16" y="16" width="288" height="288" rx="12" fill="url(#g)" opacity=".12" />
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+            font-family="Inter, sans-serif" font-weight="800" font-size="20" fill="#cfe1ff">
+            QR will appear here
+          </text>
+        </svg>
+      `.trim();
+      img.src = 'data:image/svg+xml;base64,' + btoa(svg);
+      img.alt = 'UPI QR placeholder';
+      img.style.borderRadius = '12px';
+      img.style.border = '1px solid rgba(255,255,255,.08)';
+      return img;
+    }
+  </script>
+</body>
+</html>
